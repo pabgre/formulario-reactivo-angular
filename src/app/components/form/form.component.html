@@ -1,0 +1,78 @@
+<form [formGroup]="userForm" (ngSubmit)= "onSubmit()" class="user-form">
+    <h1>Formulario Reactivo</h1>
+  <div class="form-block">
+    <label>Nombre:</label>
+    <input type="text" class="form-field" formControlName="firstName">
+    <div *ngIf="control('firstName')?.touched && control('firstName')?.invalid" class="warnings">
+      <ul>
+        <li *ngIf="control('firstName')?.errors?.required">Campo requerido</li>
+        <li *ngIf="control('firstName')?.errors?.minlength">Logitud mínima de 3 caracteres</li>
+        <li *ngIf="control('firstName')?.errors?.firstUpper">La primera letra ha de ser mayúscula</li>
+      </ul>
+    </div>
+  </div>
+<div class="form-block">
+  <label>Apellido:</label>
+  <input type="text" class="form-field" formControlName="surname">
+  <div *ngIf="control('surname')?.touched && control('surname')?.invalid" class="warnings">
+    <ul>
+      <li *ngIf="control('surname')?.errors?.required">Campo requerido</li>
+      <li *ngIf="control('surname')?.errors?.minlength">Logitud mínima de 3 caracteres</li>
+      <li *ngIf="control('surname')?.errors?.firstUpper">La primera letra ha de ser mayúscula</li>
+    </ul>
+  </div>
+</div>
+<div class="form-block">
+  <label>Usuario:</label>
+  <input type="text" class="form-field" formControlName="username">
+  <div *ngIf="control('username')?.touched && control('firstName')?.invalid" class="warnings">
+    <ul>
+      <li *ngIf="control('username')?.errors?.required">Campo requerido</li>
+      <li *ngIf="control('username')?.errors?.minlength">Logitud mínima de 3 caracteres</li>
+      <li *ngIf="control('username')?.errors?.maxlength">Logitud máxima de 15 caracteres</li>
+      <li *ngIf="control('username')?.errors?.whiteSpace">No puede contener espacios</li>
+      <li *ngIf="control('username')?.errors?.unavailableUser">Usuario no disponible</li>
+    </ul>
+  </div>
+</div>
+<div class="form-block">
+  <label>E-mail:</label>
+  <input type="text" class="form-field" type="email" formControlName="email">
+  <div *ngIf="control('email')?.touched && control('email')?.invalid" class="warnings">
+    <ul>
+      <li *ngIf="control('email')?.errors?.required">Campo requerido</li>
+      <li *ngIf="control('email')?.errors?.email">Dirección no válida</li>
+      <li *ngIf="control('email')?.errors?.minlength">Logitud mínima de 3 caracteres</li>
+    </ul>
+  </div>
+</div>
+
+<div class="form-block">
+  <label>Contraseña:</label>
+  <input type="text" class="form-field" type="password" formControlName="password">
+  <div *ngIf="control('password')?.touched && control('password')?.invalid" class="warnings">
+    <ul>
+      <li *ngIf="control('password')?.errors?.required">Campo requerido</li>
+      <li *ngIf="control('password')?.errors?.minlength">Logitud mínima de 8 caracteres</li>
+      <li *ngIf="control('password')?.errors?.noLower">Ha de contener al menos una minúscula</li>
+      <li *ngIf="control('password')?.errors?.noUpper">Ha de contener al menos una mayúscula</li>
+      <li *ngIf="control('password')?.errors?.noNumber">Ha de contener al menos un número</li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="control('password')?.touched && !control('password')?.invalid" class="form-block">
+  <label>Repetir contraseña:</label>
+  <input type="text" class="form-field" type="password" formControlName="passwordCopy">
+  <div *ngIf="control('passwordCopy')?.touched && (control('passwordCopy')?.invalid || userForm.errors?.notSamePassword)" class="warnings">
+    <ul>
+      <li *ngIf="control('passwordCopy')?.errors?.required">Repita la contraseña</li>
+      <li *ngIf="userForm.errors?.notSamePassword">Las contraseñas no coinciden</li>
+    </ul>
+  </div>
+</div>
+<div class="btn-container">
+  <button type="submit" class="btn" [disabled]="userForm.invalid">Registrar Usuario</button>
+
+</div>
+</form>

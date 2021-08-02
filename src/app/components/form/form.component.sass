@@ -1,0 +1,45 @@
+.user-form
+  margin-top: 40px
+  border: black solid 4px
+  padding: 10px
+  label
+    font-size: 16px
+    font-weight: bold
+  ul
+    margin-top: 5px
+    padding-left: 15px
+    font-size: 13px
+  .form-block
+    display: block
+    margin-bottom: 20px
+  input
+    display: block
+    width: calc(100% - 25px)
+  .form-field
+    border: 2px solid black
+    padding: 10px
+    font-size: 20px
+
+  .form-field:focus
+      border: 2px dashed black
+      outline: none
+  .btn-container
+    display: flex
+    justify-content: flex-end
+    .btn
+      border: 2px black solid
+      padding: 10px
+      color: black
+      background-color: white
+      &:disabled
+        color: grey
+        border-color: grey
+      &:disabled:hover
+        color: grey
+        border-color: grey
+        background-color: white
+        cursor: default
+      &:hover
+        background-color: black
+        color: white
+        cursor: pointer

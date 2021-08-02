@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "0",
+      "firstName": "Pablo",
+      "surname": "San Gregorio",
+      "username": "pabgre",
+      "email": "pablo@email.com",
+      "password": "p455w0Rd"
+    }
+  ]
+}

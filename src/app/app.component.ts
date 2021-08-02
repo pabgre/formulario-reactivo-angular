@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {UserService} from './services/user.service'
+
+
+import {User} from './interfaces/User'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'user-reactive-form';
+  users : User[] = [];
+
+  constructor(private userService: UserService){}
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe((users) => this.users = users);
+  }
+
+  addUser(user: User){
+    this.userService.addUser(user).subscribe((user) => {this.users.push(user); console.log(this.users)});
+
+  }
 }
